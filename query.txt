@@ -1,0 +1,52 @@
+SELECT fornitori.Costo
+FROM (((fornitori INNER JOIN spese ON fornitori.Codice=spese.Codice)INNER JOIN azienda ON spese.Azienda=azienda.Piva)INNER JOIN sede ON azienda.Piva=sede.Piva)
+WHERE sede.Via="Via Garibaldi" and sede.Numero_Civico="12" and sede.Città="Padova" 
+GROUP BY spese.Anno
+HAVING spese.Anno="2006"
+
+OUTPUT:
+Anno	Costo
+2006	20000	
+
+
+SELECT count(*) as numero_contratti
+FROM ((contratto JOIN servizio on contratto.Servizio=servizio.Codice) JOIN azienda on azienda.Piva=servizio.Azienda)
+WHERE azienda.Piva='98765430583' AND contratto.Data<='2015/12/31'and contratto.Data>='2015/12/01'
+
+OUTPUT
+numero_contratti 
+
+
+
+SELECT azienda_cliente.Piva
+FROM ((agente JOIN azienda_cliente on agente.NumeroID=azienda_cliente.Nagente)JOIN rappresentante on azienda_cliente.Piva=rappresentante.Azienda)
+WHERE agente.NumeroID=10 AND rappresentante.Nome='Carolina' AND rappresentante.Cognome='Salos'
+
+OUTPUT
+Azienda_cliente
+32154670586
+
+
+SELECT stazione_radio.Nome
+FROM (( stazione_radio JOIN spot_radio ON stazione_radio.ID=spot_radio.ID ) JOIN servizio ON spot_radio.Servizio=servizio.Codice )
+WHERE servizio.Codice=78
+
+OUTPUT
+Stazione_radio
+Radio Free
+
+
+CREATE VIEW Queryservizi as (SELECT COUNT(*) as totale, servizio.Azienda as azienda FROM servizio GROUP BY servizio.Azienda);
+SELECT MAX() FROM Queryservizi
+
+OUTPUT
+6
+98765430583
+
+
+SELECT dipendente.Nome, dipendente.Cognome
+FROM (contabile JOIN dipendente ON contabile.CF=dipendente.CF)
+WHERE dipendente.Azienda='12345670280'
+
+OUTPUT
+Ramon Reso 

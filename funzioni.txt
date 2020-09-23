@@ -1,0 +1,23 @@
+DELIMITER $
+CREATE FUNCTION spesetotali (azi CHAR)
+RETURNS INT UNSIGNED
+BEGIN
+DECLARE somma INT;
+SELECT SUM (affitto.Costo,ufficio.Costo, tasse.Costo, fornitori.Costo) INTO somma
+FROM affitto, ufficio, tasse, fornitori,azienda
+WHERE azienda.Piva=azi;
+RETURN somma;
+END $
+
+
+DELIMITER $
+CREATE FUNCTION costoservizi (cliente CHAR)
+RETURNS INT UNSIGNED
+BEGIN
+DECLARE conto INT;
+SELECT azienda_cliente.Nagente, COUNT(*) INTO conto
+FROM ((servizio INNER JOIN contratto) INNER JOIN azienda_cliente)
+WHERE contratto.Piva=cliente
+GROUP BY servizio.Costo;
+RETURN conto;
+END $

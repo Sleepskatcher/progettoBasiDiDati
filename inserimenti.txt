@@ -1,0 +1,24 @@
+INSERT INTO `azienda` (Piva) VALUES (‘12345670280’),('56789040014'), ('65471230927'), ('98765430583');
+INSERT INTO `sede` (`Via`, `Numero_Civico`, `Città`, `Provincia`, `Regione`, `Piva`) VALUES ('Via Garibaldi', '12', 'Padova', 'Padova', 'Veneto', '12345670280');
+INSERT INTO `dipendente` (`CF`, `Nome`, `Cognome`, `Stipendio`, `Dirigente`, `Azienda`) VALUES ('CAIGCS45L12H501T', 'Giulio Cesare', 'Caio', '2500', '1', '98765430583'), ('DPLMRA67D13C872M', 'Mario', 'De Polis', '1200', '0', '12345670280'),
+(‘RBSLGO60S41F239W’, ‘Olga’, ‘Raboso’, ‘3200’, ‘1’, ‘12345670280’),
+('RSERMN80A15B249S', 'Ramon', 'Reso', '1400', '0', '12345670280'), ('GSTLND78A55F205S', 'Alexandra', 'Gastani Frinzi', '1600', '0', '12345670280'); 
+INSERT INTO `impiegato` (`CF`) VALUES ('DPLMRA67D13C872M') 
+INSERT INTO `agente` (`NumeroID`, `CF`) VALUES ('10', 'GSTLND78A55F205S');
+INSERT INTO `contabile` (`CF`) VALUES ('RSERMN80A15B249S'); 
+INSERT INTO `azienda_cliente` (`Piva`, `Nagente`) VALUES ('43567210284', '10'), ('65743820584','10'), ('34251670589','10'), ('76893210584','10'), ('32154670586','10'), ('32521640587','10');
+INSERT INTO `sede_cliente` (`Via`, `Numero_Civico`, `Città`, `Regione`, `Provincia`, `Piva`) VALUES ('Via delle Ceramiche', '24', 'Ponte di Brenta', 'Veneto', 'Padova', '43567210284');
+INSERT INTO `rappresentante` (`CF`, `Nome`, `Cognome`, `Ruolo`, `Azienda`) VALUES ('CRLVTR68B12H601Z', 'Carlo', 'Ventron', 'Amministratore', '43567210284'), ('SLSCLN74E55A473V', 'Carolina', 'Salos', 'Amministratore', '32154670586'), ('ZNCFPP60D03H857L', 'Filippo', 'Zinci', 'Propietario', '32521640587'), ('ZFFNRC68R63E469S', 'Enrica', 'Zaffron', 'Amministratore', '34251670589'), ('TRRDVD59C12C956B', 'Davide', 'Turri', 'Propietario', '65743820584'), ('RLEPLA70S62A464H', 'Paola', 'Reali', 'Amministratore', '76893210584');
+INSERT INTO `contratto` (`Codice`, `Tipo`, `Pagamento`, `Piva`, `Servizio`, `Data`) VALUES ('212', 'a numero', 'assegno', '43567210284', '4', '2008-02-13'), ('15', 'a numero', 'assegno', '76893210584', '6', '2015-12-28'), ('17', 'a tempo', 'assegno', '65743820584', '13', '2015-12-21'), ('25', 'a numero', 'assegno', '34251670589', '17', '2015-12-14'), ('31', 'a tempo', 'bonifico', '32521640587', '21', '2015-12-4'), ('41', 'a numero', 'assegno', '32154670586', '34', '2015-12-16');
+INSERT INTO 'spese' (Codice, Contabile, Azienda, Anno) VALUES ('2', 'RSERMN80A15B249S', '12345670280', '2006' );
+INSERT INTO 'affitto' (Costo, Codice) VALUES ('120000', '2');
+INSERT INTO `ufficio` (`Costo`, `Codice`, `Tipo`, `Quantità`) VALUES ('120', '2', 'Penne', '240');
+INSERT INTO `tasse` (`Costo`, `Codice`, `Tipo`) VALUES ('1100', '2', 'Elettricità');
+INSERT INTO `fornitori` (`Costo`, `Codice`, `Tipo`, `Quantità`) VALUES ('20000', '2', 'Cartelloni', '400');
+INSERT INTO `servizio` (`Codice`, `Costo`, `Azienda`) VALUES ('4', '80000', '12345670280'), ('7', '38000', '65471230927'),( '47', '48000', '65471230927')( '55', '56000', '65471230927'), ('78', '23000', '98765430583'), ('13', '50000', '98765430583'), ('34', '42000', '98765430583'), ('17', '32000', '98765430583'), ('21', '19800', '98765430583'), ('6', '24000', '98765430583'), ('5', '72000', '56789040014'), ('9', '60000', '56789040014'), ('33', '39000', '56789040014'), ('28', '45000', '56789040014'), ('20', '74000', '56789040014');
+INSERT INTO `im_se` (`CF`, `Codice`) VALUES ('DPLMRA67D13C872M', '4');
+INSERT INTO `cartelloni` (`Quantità`, `Servizio`) VALUES ('50', '4');
+INSERT INTO `volantini` (`Quantità`, `Servizio`) VALUES ('20000', '4');
+INSERT INTO `strisce_adesive` (`Quantità`, `Servizio`) VALUES ('500', '4');
+INSERT INTO `spot_radio` (`Frequenza`, `ID`, `Orario_inizio`, `Orairio_fine`, `Servizio`) VALUES ('12', NULL, '06:00:00', '06:00:36', '4'), ('8', NULL, '03:00:00', '03:00:15', '78');
+INSERT INTO `stazione_radio` (`Frequenza_radio`, `Nome`, `ID`) VALUES ('82.30', 'RadioGalta', '1'), ('44.20', 'Radio Free', '2');
